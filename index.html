@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        nav {
+            background-color: #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .nav-logo i {
+            margin-right: 8px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+        nav a:active {
+            background-color: #5a6268;
+            border-color: #5a6268;
+            transform: scale(0.95);
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 50px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            text-align: center;
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .header-content {
+            max-width: 600px;
+        }
+        section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #6c757d;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .skills {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .skill {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .skill-name {
+            font-weight: bold;
+            min-width: 100px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .progress-bar {
+            flex: 1;
+            height: 20px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #6c757d, #6c757d);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        .skill-percentage {
+            font-size: 14px;
+            color: #6c757d;
+            min-width: 50px;
+            text-align: right;
+        }
+        .project {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .project-icon {
+            font-size: 24px;
+            color: #6c757d;
+            flex-shrink: 0;
+        }
+        .project-content h3 {
+            color: #495057;
+            margin: 0 0 10px 0;
+        }
+        .tech-icons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .tech-btn {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .tech-btn:hover {
+            background-color: #5a6268;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+        }
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+        .footer-icons a {
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .footer-icons a:hover {
+            color: #6c757d;
+        }
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+        }
+        #back-to-top:hover {
+            background: #6c757d;
+        }
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .nav-logo {
+                font-size: 20px;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 10px;
+                gap: 20px;
+            }
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+            }
+            .header-content {
+                text-align: center;
+            }
+            .skill {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .skill-name {
+                min-width: auto;
+            }
+            .skill-percentage {
+                text-align: left;
+            }
+            .project {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .tech-icons {
+                justify-content: center;
+            }
+            .footer-icons {
+                gap: 15px;
+            }
+            section {
+                margin: 20px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <span class="nav-logo"><i class="fas fa-code"></i> </> Portfolio</span>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <img src="img1.png" alt="Profile Picture" class="profile-pic">
+        <div class="header-content">
+            <h1>Janine S. Oyod</h1>
+            <p>Hello! I am a first-year student studying Computer Science, deeply passionate about software development and technology. I'm excited to learn new programming languages and build innovative projects. Currently, I'm exploring various fields within computer science to discover my focus while building a strong foundation in core programming topics.</p>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am from Baguio City in Benguet, Philippines, and I am pursuing a Bachelor of Science in Computer Science at the University of the Cordilleras. My journey into technology began during senior high school at Baguio College of Technology, where I followed the TVL track specializing in ICT Computer Programming and earned my NC2 certification in Computer Programming. This experience ignited my interest in software development, and I am eager to expand my knowledge and skills throughout my degree.</p>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill">
+                <div class="skill-name"><i class="fab fa-java"></i> Java</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 50%;"></div>
+                </div>
+                <div class="skill-percentage">50%</div>
+            </div>
+            <div class="skill">
+                <div class="skill-name"><i class="fab fa-js-square"></i> JavaScript</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 50%;"></div>
+                </div>
+                <div class="skill-percentage">50%</div>
+            </div>
+            <div class="skill">
+                <div class="skill-name"><i class="fas fa-code"></i> C#</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 40%;"></div>
+                </div>
+                <div class="oskill-percentage">40%</div>
+            </div>
+            <div class="skill">
+                <div class="skill-name"><i class="fab fa-html5"></i> HTML</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 90%;"></div>
+                </div>
+                <div class="skill-percentage">90%</div>
+            </div>
+            <div class="skill">
+                <div class="skill-name"><i class="fab fa-css3-alt"></i> CSS</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%;"></div>
+                </div>
+                <div class="skill-percentage">85%</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <ul>
+            <li><i class="fas fa-graduation-cap"></i> <strong>2025–Present</strong><br>Bachelor of Science in Computer Science<br>University of the Cordilleras, Baguio City, Philippines</li>
+            <li><i class="fas fa-graduation-cap"></i> <strong>2023–2025</strong><br>Senior High School (TVL Track: ICT Computer Programming)<br>Baguio College of Technology, Baguio City, Philippines<br><em>Achieved NC2 Certification in Computer Programming</em></li>
+            <li><i class="fas fa-graduation-cap"></i> <strong>2019–2023</strong><br>Junior High School<br>San Vicente National High School, Baguio City, Philippines</li>
+            <li><i class="fas fa-graduation-cap"></i> <strong>2013–2019</strong><br>Elementary School<br>San Vicente Elementary School, Baguio City, Philippines</li>
+        </ul>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <i class="fas fa-project-diagram project-icon"></i>
+            <div class="project-content">
+                <h3>Functional POS System for Grocery Stores</h3>
+                <p>Developed a point-of-sale application to streamline checkout operations in grocery stores. The system features product scanning, total calculations, transaction management, and receipt generation, enhancing operational efficiency.</p>
+                <div class="tech-icons">
+                    <button class="tech-btn"><i class="fab fa-js-square"></i> JavaScript</button>
+                    <button class="tech-btn"><i class="fas fa-code"></i> Eclipse IDE</button>
+                </div>
+            </div>
+        </div>
+        <div class="project">
+            <i class="fas fa-paw project-icon"></i>
+            <div class="project-content">
+                <h3>Pet Adoption Website</h3>
+                <p>Created a web-based platform to connect potential pet adopters with available pets. Users can browse and view adoptable pets remotely, making the adoption process more convenient and accessible, especially for those living far from adoption centers.</p>
+                <div class="tech-icons">
+                    <button class="tech-btn"><i class="fab fa-html5"></i> HTML</button>
+                    <button class="tech-btn"><i class="fab fa-css3-alt"></i> CSS</button>
+                    <button class="tech-btn"><i class="fab fa-js-square"></i> JavaScript</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Feel free to reach out for collaborations, opportunities, or questions!</p>
+        <ul>
+            <li><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:your.email@gmail.com">janineoyod57@gmail.com</a></li>
+            <li><i class="fab fa-github"></i> <strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">https://github.com/WHunt365</a></li>
+          
+        </ul>
+    </section>
+
+    <footer>
+        <div class="footer-icons">
+            <a href="mailto:your.email@gmail.com" title="Gmail"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#contact" title="Contact Me"><i class="fas fa-address-book"></i></a>
+        </div>
+        <p>&copy; 2023 All rights reserved.</p>
+    </footer>
+
+    <button id="back-to-top">↑</button>
+
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+
+        // Show/hide back-to-top button
+        window.addEventListener('scroll', function() {
+            const button = document.getElementById('back-to-top');
+            if (window.scrollY > 200) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        });
+
+        // Smooth scroll to top
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
